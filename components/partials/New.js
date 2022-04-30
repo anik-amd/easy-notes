@@ -32,10 +32,10 @@ const New = () => {
 
   return (
     <>
-      <div className="sm:flex sm:justify-center md:justify-center">
+      <div className="flex justify-center">
         {!showForm && (
           <button
-            className="py-5 pl-4 pr-6 m-5 block sm:w-5/12 md:w-6/12 rounded-xl bg-cyan-50 dark:bg-cyan-900 hover:bg-cyan-100 dark:hover:bg-cyan-800"
+            className="py-5 pl-4 pr-6 m-5 block w-4/5 sm:w-5/12 md:w-6/12 rounded-xl bg-cyan-50 dark:bg-cyan-900 hover:bg-cyan-100 dark:hover:bg-cyan-800"
             onClick={() => setShowForm(true)}
           >
             ✒ New Note
