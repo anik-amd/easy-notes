@@ -8,9 +8,15 @@ const Notes = () => {
         {notes.map((note) => {
           return (
             <Card key={note.id}>
-              <h3>{note.title}</h3>
-              <h4>{note.date}</h4>
-              <div>{note.content.slice(0, 140)}</div>
+              <h3 className="text-lg font-semibold mb-1 text-zinc-800 dark:text-zinc-200">
+                {note.title}
+              </h3>
+              <h4 className="text-sm mb-3 text-zinc-700 dark:text-zinc-300">
+                {note.date}
+              </h4>
+              <div className="text-zinc-800 dark:text-zinc-200">
+                {note.content.slice(0, 140)}
+              </div>
             </Card>
           );
         })}
