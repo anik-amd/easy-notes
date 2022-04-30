@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 import { useTheme } from "next-themes";
 
 const Header = () => {
@@ -13,15 +14,9 @@ const Header = () => {
     const currentTheme = theme === "system" ? systemTheme : theme;
 
     if (currentTheme === "dark") {
-      return (
-        <button onClick={() => setTheme("light")}>🌞</button>
-        // <SunIcon className="w-10 h-10 text-yellow-500 " role="button" onClick={() => setTheme('light')} />
-      );
+      return <button onClick={() => setTheme("light")}>🌞</button>;
     } else {
-      return (
-        <button onClick={() => setTheme("dark")}>🌙</button>
-        // <MoonIcon className="w-10 h-10 text-gray-900 " role="button" onClick={() => setTheme('dark')} />
-      );
+      return <button onClick={() => setTheme("dark")}>🌙</button>;
     }
   };
   return (
@@ -32,10 +27,13 @@ const Header = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex justify-between bg-slate-200 dark:bg-slate-800 py-3 px-10">
-        <h1 className="text-3xl font-bold text-slate-700 dark:text-slate-300">
-          Easy Notes
-        </h1>
-        {/* <button>🔆</button> */}
+        <Link href={"/"}>
+          <a>
+            <h1 className="text-3xl font-bold text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-400">
+              Easy Notes
+            </h1>
+          </a>
+        </Link>
         {renderThemeChanger()}
       </div>
     </>
