@@ -35,9 +35,9 @@ const Note = () => {
           <div className="text-zinc-800 dark:text-zinc-200">{note.content}</div>
         </Card>
       </div>
-      <div className="sm:flex sm:justify-self-center md:justify-center">
+      <div className="flex justify-self-center justify-center">
         <Link href="/">
-          <a className="text-lg text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-400">
+          <a className="text-lg mb-5 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-400">
             🏠 Back to home
           </a>
         </Link>
