@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { useRouter } from "next/router";
 import Card from "../../components/UI/Card";
+import Button from "../../components/UI/Button";
 
 const Note = () => {
   const router = useRouter();
@@ -22,18 +23,14 @@ const Note = () => {
                 {note.date}
               </h4>
             </div>
-            <div>
-              <h4 className="text-sm mb-2 text-zinc-700 dark:text-zinc-300">
-                ✏ Edit
-              </h4>
-              <h4 className="text-sm text-zinc-700 dark:text-zinc-300">
-                ⚠ Delete
-              </h4>
-            </div>
           </div>
 
           <div className="text-zinc-800 dark:text-zinc-200">{note.content}</div>
         </Card>
+      </div>
+      <div className="mb-6 sm:flex sm:justify-center md:justify-center">
+        <Button className="mx-3" label="✏ Edit" size="sm" />
+        <Button className="mx-3" size="sm" label="🚫 Delete" />
       </div>
       <div className="flex justify-self-center justify-center">
         <Link href="/">
