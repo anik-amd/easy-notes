@@ -1,32 +1,6 @@
 import { useState } from "react";
 import Button from "../UI/Button";
 
-const NewForm = () => {
-  return (
-    <>
-      <form className="p-5 m-5 rounded-lg block sm:w-5/12 md:w-6/12 bg-zinc-50 dark:bg-zinc-800">
-        <span className="block font-semibold pb-5 text-zinc-700 dark:text-zinc-200 text-2xl">
-          New Note
-        </span>
-        <input
-          className="rounded-lg border-2 w-full p-4 mb-5 font-mono text-zinc-700 dark:text-zinc-200"
-          type="text"
-          placeholder="Title"
-        />
-        <textarea
-          className="rounded-lg border-2 w-full p-4  mb-2 font-mono text-zinc-700 dark:text-zinc-200"
-          type="text"
-          placeholder="Start Writing..."
-          rows={8}
-        />
-        <Button label="✨ Done!" onClick={() => setShowForm(false)}>
-          Done!
-        </Button>
-      </form>
-    </>
-  );
-};
-
 const New = () => {
   const [showForm, setShowForm] = useState(false);
 
@@ -41,7 +15,27 @@ const New = () => {
             ✒ New Note
           </button>
         )}
-        {showForm && <NewForm onClick={() => setShowForm(false)} />}
+        {showForm && (
+          <form className="p-5 m-5 rounded-lg block sm:w-5/12 md:w-6/12 bg-zinc-50 dark:bg-zinc-800">
+            <span className="block font-semibold pb-5 text-zinc-700 dark:text-zinc-200 text-2xl">
+              New Note
+            </span>
+            <input
+              className="rounded-lg border-2 w-full p-4 mb-5 font-mono text-zinc-700 dark:text-zinc-200"
+              type="text"
+              placeholder="Title"
+            />
+            <textarea
+              className="rounded-lg border-2 w-full p-4  mb-2 font-mono text-zinc-700 dark:text-zinc-200"
+              type="text"
+              placeholder="Start Writing..."
+              rows={8}
+            />
+            <Button label="✨ Done!" onClick={() => setShowForm(false)}>
+              Done!
+            </Button>
+          </form>
+        )}
       </div>
     </>
   );
