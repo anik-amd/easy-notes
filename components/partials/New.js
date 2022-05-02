@@ -1,8 +1,55 @@
+import { nanoid } from "nanoid";
 import { useState } from "react";
 import Button from "../UI/Button";
 
+import { useSelector, useDispatch } from "react-redux";
+import { addNote, updateNote, deleteNote } from "../../store/notesSlice";
+
 const New = () => {
   const [showForm, setShowForm] = useState(false);
+
+  const today = new Date();
+  const date =
+    today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
+
+  const [formData, setFormData] = useState({
+    title: "",
+    content: "",
+    date: date,
+    id: nanoid(),
+  });
+  const notes = useSelector((state) => state.notes.notes);
+  const dispatch = useDispatch();
+
+  const HandleForm = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevValue) => {
+      return {
+        ...prevValue,
+        [name]: value,
+      };
+    });
+  };
+
+  const handleSubmit = () => {
+    setShowForm(false);
+    console.log(formData);
+    dispatch(addNote(formData));
+
+    const today = new Date();
+    const date =
+      today.getDate() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getFullYear();
+    setFormData({
+      title: "",
+      content: "",
+      date: date,
+      id: nanoid(),
+    });
+  };
 
   return (
     <>
@@ -21,17 +68,23 @@ const New = () => {
               New Note
             </span>
             <input
+              name="title"
               className="rounded-lg border-2 w-full p-4 mb-5 font-mono text-zinc-700 dark:text-zinc-200"
               type="text"
               placeholder="Title"
+              value={formData.title}
+              onChange={HandleForm}
             />
             <textarea
+              name="content"
               className="rounded-lg border-2 w-full p-4  mb-2 font-mono text-zinc-700 dark:text-zinc-200"
               type="text"
               placeholder="Start Writing..."
               rows={8}
+              value={formData.content}
+              onChange={HandleForm}
             />
-            <Button label="✨ Done!" onClick={() => setShowForm(false)}>
+            <Button label="✨ Done!" onClick={handleSubmit}>
               Done!
             </Button>
           </form>
