@@ -1,9 +1,12 @@
-import notes from "../../__mock__/notes";
+// import notes from "../../__mock__/notes";
 
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import Swal from "sweetalert2";
 import { useState } from "react";
+
+import { useSelector, useDispatch } from "react-redux";
+import { addNote, updateNote, deleteNote } from "../../store/notesSlice";
 
 import { useRouter } from "next/router";
 import Card from "../../components/UI/Card";
@@ -14,6 +17,7 @@ const Note = () => {
   const { theme, setTheme } = useTheme();
   const router = useRouter();
   const { id } = router.query;
+  const notes = useSelector((state) => state.notes.notes);
   const note = notes.find((data) => data.id === id);
   const [data, setData] = useState({
     title: note.title,
