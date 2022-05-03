@@ -12,6 +12,7 @@ specifiers:
   react: 18.1.0
   react-dom: 18.1.0
   react-redux: ^8.0.1
+  redux-persist: ^6.0.0
   sweetalert2: ^11.4.10
   tailwindcss: ^3.0.24
 
@@ -23,6 +24,7 @@ dependencies:
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
   react-redux: 8.0.1_react-dom@18.1.0+react@18.1.0
+  redux-persist: 6.0.0
   sweetalert2: 11.4.10
 
 devDependencies:
@@ -1816,6 +1818,12 @@ packages:
     dependencies:
       picomatch: 2.3.1
     dev: true
+
+  /redux-persist/6.0.0:
+    resolution: {integrity: sha512-71LLMbUq2r02ng2We9S215LtPu3fY0KgaGE0k8WRgl6RkqxtGfl7HUozz1Dftwsb0D/5mZ8dwAaPbtnzfvbEwQ==}
+    peerDependencies:
+      redux: '>4.0.0'
+    dev: false
 
   /redux-thunk/2.4.1_redux@4.2.0:
     resolution: {integrity: sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==}
