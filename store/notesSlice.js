@@ -6,25 +6,18 @@ export const notesSlice = createSlice({
     notes: [],
   },
   reducers: {
-    // increment: (state) => {
-    //   // Redux Toolkit allows us to write "mutating" logic in reducers. It
-    //   // doesn't actually mutate the state because it uses the Immer library,
-    //   // which detects changes to a "draft state" and produces a brand new
-    //   // immutable state based off those changes
-    //   state.value += 1;
-    // },
-    // decrement: (state) => {
-    //   state.value -= 1;
-    // },
-    // incrementByAmount: (state, action) => {
-    //   state.value += action.payload;
-    // },
-    // setNotes: (state) => {},
     addNote: (state, action) => {
-      state.notes.push(action.payload);
+      state.notes.unshift(action.payload);
     },
-    updateNote: (state, action) => {},
-    deleteNote: (state, action) => {},
+    updateNote: (state, action) => {
+      console.log(action.payload);
+      state.notes = state.notes.filter((note) => note.id !== action.payload.id);
+      const note = action.payload;
+      state.notes.unshift(note);
+    },
+    deleteNote: (state, action) => {
+      state.notes = state.notes.filter((note) => note.id !== action.payload.id);
+    },
   },
 });
 

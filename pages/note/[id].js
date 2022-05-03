@@ -13,13 +13,18 @@ import Card from "../../components/UI/Card";
 import Button from "../../components/UI/Button";
 
 const Note = () => {
+  // TODO: Add date editing.
+
   const [showForm, setShowForm] = useState(false);
   const { theme, setTheme } = useTheme();
   const router = useRouter();
+  const dispatch = useDispatch();
+
   const { id } = router.query;
   const notes = useSelector((state) => state.notes.notes);
   const note = notes.find((data) => data.id === id);
-  const [data, setData] = useState({
+  const [formData, setFormData] = useState({
+    id: note.id,
     title: note.title,
     date: note.date,
     content: note.content,
@@ -55,18 +60,19 @@ const Note = () => {
     }
   };
 
-  const handleEdit = () => {
-    setShowForm((o) => !o);
-  };
-
   const handleEditing = (event) => {
     const { name, value } = event.target;
-    setData((prevValue) => {
+    setFormData((prevValue) => {
       return {
         ...prevValue,
         [name]: value,
       };
     });
+  };
+
+  const handleSubmit = () => {
+    setShowForm(false);
+    dispatch(updateNote(formData));
   };
 
   return (
@@ -95,7 +101,7 @@ const Note = () => {
             <div className="flex justify-center">
               <Button
                 className="mx-3"
-                onClick={handleEdit}
+                onClick={() => setShowForm(true)}
                 label="✏ Edit"
                 size="sm"
               />
@@ -110,29 +116,29 @@ const Note = () => {
         </>
       )}
       {showForm && (
-        <form className="p-5 m-5 rounded-lg block sm:w-5/12 md:w-6/12 bg-zinc-50 dark:bg-zinc-800">
-          <span className="block font-semibold pb-5 text-zinc-700 dark:text-zinc-200 text-2xl">
-            Edit Note
-          </span>
-          <input
-            onChange={handleEditing}
-            name="title"
-            className="rounded-lg border-2 w-full p-4 mb-5 font-mono text-zinc-700 dark:text-zinc-200"
-            type="text"
-            value={data.title}
-          />
-          <textarea
-            name="content"
-            onChange={handleEditing}
-            className="rounded-lg border-2 w-full p-4  mb-2 font-mono text-zinc-700 dark:text-zinc-200"
-            type="text"
-            rows={8}
-            value={data.content}
-          />
-          <Button label="✨ Done!" onClick={() => setShowForm(false)}>
-            Done!
-          </Button>
-        </form>
+        <div className="sm:flex sm:justify-center md:justify-center">
+          <form className="p-5 m-5 rounded-lg block sm:w-5/12 md:w-6/12 bg-zinc-50 dark:bg-zinc-800">
+            <span className="block font-semibold pb-5 text-zinc-700 dark:text-zinc-200 text-2xl">
+              Edit Note
+            </span>
+            <input
+              onChange={handleEditing}
+              name="title"
+              className="rounded-lg border-2 w-full p-4 mb-5 font-mono text-zinc-700 dark:text-zinc-200"
+              type="text"
+              value={formData.title}
+            />
+            <textarea
+              name="content"
+              onChange={handleEditing}
+              className="rounded-lg border-2 w-full p-4  mb-2 font-mono text-zinc-700 dark:text-zinc-200"
+              type="text"
+              rows={8}
+              value={formData.content}
+            />
+            <Button label="✨ Done!" onClick={handleSubmit} />
+          </form>
+        </div>
       )}
 
       <div className="flex justify-self-center justify-center">

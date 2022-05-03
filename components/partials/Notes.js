@@ -1,10 +1,8 @@
 import Link from "next/link";
-// import { useEffect, useState } from "react";
 // import notes from "../../__mock__/notes";
 import Card from "../UI/Card";
 
 import { useSelector, useDispatch } from "react-redux";
-import { addNote, updateNote, deleteNote } from "../../store/notesSlice";
 
 const Notes = () => {
   const notes = useSelector((state) => state.notes.notes);
