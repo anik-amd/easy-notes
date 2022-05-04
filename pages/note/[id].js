@@ -24,40 +24,63 @@ const Note = () => {
   const notes = useSelector((state) => state.notes.notes);
   const note = notes.find((data) => data.id === id);
   const [formData, setFormData] = useState({
-    id: note.id,
-    title: note.title,
-    date: note.date,
-    content: note.content,
+    id: note && note.id,
+    title: note && note.title,
+    date: note && note.date,
+    content: note && note.content,
   });
 
   const handleDelete = () => {
-    if (theme === "dark") {
-      Swal.fire({
-        title: "Delete Note",
-        text: "Are you sure? Your note will be permanently deleted.",
-        icon: "warning",
-        confirmButtonText: "Delete",
-        confirmButtonColor: "rgb(185 28 28)",
-        showCancelButton: true,
-        cancelButtonText: "Keep",
-        cancelButtonColor: "rgb(68 64 60)",
-        width: "16rem",
-        background: "rgb(38 38 38)",
-        color: "rgb(212 212 212)",
-      });
-    } else {
-      Swal.fire({
-        title: "Delete Note",
-        text: "Are you sure? Your note will be permanently deleted.",
-        icon: "warning",
-        confirmButtonText: "Delete",
-        confirmButtonColor: "rgb(239 68 68)",
-        showCancelButton: true,
-        cancelButtonText: "Keep",
-        cancelButtonColor: "rgb(68 64 60)",
-        width: "16rem",
-      });
-    }
+    // if (theme === "dark") {
+    //   Swal.fire({
+    //     title: "Delete Note",
+    //     text: "Are you sure? Your note will be permanently deleted.",
+    //     icon: "warning",
+    //     confirmButtonText: "Delete",
+    //     confirmButtonColor: "rgb(185 28 28)",
+    //     showCancelButton: true,
+    //     cancelButtonText: "Keep",
+    //     cancelButtonColor: "rgb(68 64 60)",
+    //     width: "16rem",
+    //     background: "rgb(38 38 38)",
+    //     color: "rgb(212 212 212)",
+    //   });
+    // } else {
+    //   Swal.fire({
+    //     title: "Delete Note",
+    //     text: "Are you sure? Your note will be permanently deleted.",
+    //     icon: "warning",
+    //     confirmButtonText: "Delete",
+    //     confirmButtonColor: "rgb(239 68 68)",
+    //     showCancelButton: true,
+    //     cancelButtonText: "Keep",
+    //     cancelButtonColor: "rgb(68 64 60)",
+    //     width: "16rem",
+    //   });
+    // }
+
+    Swal.fire({
+      title: "Delete Note",
+      text: "Are you sure? Your note will be permanently deleted.",
+      icon: "warning",
+      confirmButtonText: "Delete",
+      confirmButtonColor: `${
+        theme === "dark" ? "rgb(185 28 28)" : "rgb(239 68 68)"
+      }`,
+      showCancelButton: true,
+      cancelButtonText: "Keep",
+      cancelButtonColor: `${
+        theme === "dark" ? "rgb(68 64 60)" : "rgb(68 64 60)"
+      }`,
+      width: "16rem",
+      background: `${theme === "dark" && "rgb(38 38 38)"}`,
+      color: `${theme === "dark" && "rgb(212 212 212)"}`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        router.push("/");
+        dispatch(deleteNote(note));
+      }
+    });
   };
 
   const handleEditing = (event) => {
@@ -77,7 +100,7 @@ const Note = () => {
 
   return (
     <>
-      {!showForm && (
+      {note && !showForm && (
         <>
           <div className="p-5 m-5 sm:flex sm:justify-center md:justify-center">
             <Card hover="disable">
@@ -115,7 +138,7 @@ const Note = () => {
           </div>
         </>
       )}
-      {showForm && (
+      {note && showForm && (
         <div className="sm:flex sm:justify-center md:justify-center">
           <form className="p-5 m-5 rounded-lg block sm:w-5/12 md:w-6/12 bg-zinc-50 dark:bg-zinc-800">
             <span className="block font-semibold pb-5 text-zinc-700 dark:text-zinc-200 text-2xl">
