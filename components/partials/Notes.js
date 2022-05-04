@@ -3,10 +3,11 @@ import Link from "next/link";
 import Card from "../UI/Card";
 
 import { useSelector, useDispatch } from "react-redux";
+import { format } from "timeago.js";
 
 const Notes = () => {
   const notes = useSelector((state) => state.notes.notes);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   return (
     <>
@@ -21,7 +22,7 @@ const Notes = () => {
                       {note.title}
                     </h3>
                     <h4 className="text-sm mb-3 text-zinc-700 dark:text-zinc-300">
-                      {note.date}
+                      {format(note.date)}
                     </h4>
                     <div className="text-zinc-800 dark:text-zinc-200">
                       {note.content.slice(0, 140)}

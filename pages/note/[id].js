@@ -6,7 +6,9 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { addNote, updateNote, deleteNote } from "../../store/notesSlice";
+import { updateNote, deleteNote } from "../../store/notesSlice";
+
+import { format } from "timeago.js";
 
 import { useRouter } from "next/router";
 import Card from "../../components/UI/Card";
@@ -31,34 +33,6 @@ const Note = () => {
   });
 
   const handleDelete = () => {
-    // if (theme === "dark") {
-    //   Swal.fire({
-    //     title: "Delete Note",
-    //     text: "Are you sure? Your note will be permanently deleted.",
-    //     icon: "warning",
-    //     confirmButtonText: "Delete",
-    //     confirmButtonColor: "rgb(185 28 28)",
-    //     showCancelButton: true,
-    //     cancelButtonText: "Keep",
-    //     cancelButtonColor: "rgb(68 64 60)",
-    //     width: "16rem",
-    //     background: "rgb(38 38 38)",
-    //     color: "rgb(212 212 212)",
-    //   });
-    // } else {
-    //   Swal.fire({
-    //     title: "Delete Note",
-    //     text: "Are you sure? Your note will be permanently deleted.",
-    //     icon: "warning",
-    //     confirmButtonText: "Delete",
-    //     confirmButtonColor: "rgb(239 68 68)",
-    //     showCancelButton: true,
-    //     cancelButtonText: "Keep",
-    //     cancelButtonColor: "rgb(68 64 60)",
-    //     width: "16rem",
-    //   });
-    // }
-
     Swal.fire({
       title: "Delete Note",
       text: "Are you sure? Your note will be permanently deleted.",
@@ -73,8 +47,8 @@ const Note = () => {
         theme === "dark" ? "rgb(68 64 60)" : "rgb(68 64 60)"
       }`,
       width: "16rem",
-      background: `${theme === "dark" && "rgb(38 38 38)"}`,
-      color: `${theme === "dark" && "rgb(212 212 212)"}`,
+      background: `${theme === "dark" ? "rgb(38 38 38)" : "#fff"}`,
+      color: `${theme === "dark" ? "rgb(212 212 212)" : "#545454"}`,
     }).then((result) => {
       if (result.isConfirmed) {
         router.push("/");
@@ -110,7 +84,7 @@ const Note = () => {
                     {note.title}
                   </h3>
                   <h4 className="text-sm mb-5 text-zinc-700 dark:text-zinc-300">
-                    {note.date}
+                    {format(note.date)}
                   </h4>
                 </div>
               </div>

@@ -1,24 +1,23 @@
 import { nanoid } from "nanoid";
+
 import { useState } from "react";
 import Button from "../UI/Button";
 
 import { useSelector, useDispatch } from "react-redux";
-import { addNote, updateNote, deleteNote } from "../../store/notesSlice";
+import { addNote } from "../../store/notesSlice";
 
 const New = () => {
   const [showForm, setShowForm] = useState(false);
 
   const today = new Date();
-  const date =
-    today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
 
   const [formData, setFormData] = useState({
     title: "",
     content: "",
-    date: date,
+    date: today.toString(),
     id: nanoid(),
   });
-  const notes = useSelector((state) => state.notes.notes);
+  // const notes = useSelector((state) => state.notes.notes);
   const dispatch = useDispatch();
 
   const HandleForm = (event) => {
@@ -37,16 +36,10 @@ const New = () => {
     dispatch(addNote(formData));
 
     const today = new Date();
-    const date =
-      today.getDate() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getFullYear();
     setFormData({
       title: "",
       content: "",
-      date: date,
+      date: today.toString(),
       id: nanoid(),
     });
   };
