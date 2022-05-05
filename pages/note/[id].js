@@ -39,16 +39,20 @@ const Note = () => {
       icon: "warning",
       confirmButtonText: "Delete",
       confirmButtonColor: `${
-        theme === "dark" ? "rgb(185 28 28)" : "rgb(239 68 68)"
+        // theme === "dark" ? "rgb(185 28 28)" : "rgb(239 68 68)"
+        theme === "light" ? "rgb(239 68 68)" : "rgb(185 28 28)"
       }`,
       showCancelButton: true,
       cancelButtonText: "Keep",
       cancelButtonColor: `${
-        theme === "dark" ? "rgb(68 64 60)" : "rgb(68 64 60)"
+        // theme === "dark" ? "rgb(68 64 60)" : "rgb(68 64 60)"
+        theme === "light" ? "rgb(68 64 60)" : "rgb(68 64 60)"
       }`,
       width: "16rem",
-      background: `${theme === "dark" ? "rgb(38 38 38)" : "#fff"}`,
-      color: `${theme === "dark" ? "rgb(212 212 212)" : "#545454"}`,
+      // background: `${theme === "dark" ? "rgb(38 38 38)" : "#fff"}`,
+      background: `${theme === "light" ? "#fff" : "rgb(38 38 38)"}`,
+      // color: `${theme === "dark" ? "rgb(212 212 212)" : "#545454"}`,
+      color: `${theme === "light" ? "#545454" : "rgb(212 212 212)"}`,
     }).then((result) => {
       if (result.isConfirmed) {
         router.push("/");

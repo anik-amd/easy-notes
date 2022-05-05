@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <ThemeProvider enableSystem={true} attribute="class">
+          <ThemeProvider enableSystem={false} attribute="class">
             <Layout>
               <Component {...pageProps} />
             </Layout>
