@@ -59,10 +59,12 @@ const Note = () => {
 
   const handleEditing = (event) => {
     const { name, value } = event.target;
+    const today = new Date();
     setFormData((prevValue) => {
       return {
         ...prevValue,
         [name]: value,
+        date: today.toString(),
       };
     });
   };
