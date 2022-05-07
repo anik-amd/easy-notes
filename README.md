@@ -5,20 +5,14 @@
 
 ### Features
 
-💛 Open source & free.
-
-⚡ No ads, no tracking.
-
-✨ Simple, minimalist design.
-
-📄 Everything is saved in the browser.
-
-🌙 Dark mode.
+- 💛 Open source & free.
+- ⚡ No ads, no tracking.
+- ✨ Simple, minimalist design.
+- 📄 Everything is saved in the browser.
+- 🌙 Dark mode.
 
 ### Techstack
 
-⭐ NextJS.
-
-🎨 Tailwind.
-
-💪 Redux.
+- ⭐ NextJS.
+- 🎨 Tailwind.
+- 💪 Redux.
