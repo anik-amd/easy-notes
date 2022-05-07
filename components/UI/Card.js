@@ -9,7 +9,7 @@ const Card = (props) => {
         !props.hover && "hover:bg-zinc-50 dark:hover:bg-zinc-800"
       } rounded-xl ${
         props.size ? "max-w-sm" : "max-w-lg"
-      } overflow-hidden shadow-lg p-5`}
+      } overflow-hidden shadow-lg p-5  whitespace-pre-wrap`}
     >
       {props.children}
     </div>

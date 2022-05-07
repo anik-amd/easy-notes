@@ -26,7 +26,7 @@ const Notes = () => {
                       {format(note.date)}
                     </h4>
                     <div className="text-zinc-800 dark:text-zinc-200">
-                      {note.content.slice(0, 140)}
+                      {note.content.slice(0, 80)}
                     </div>
                   </Card>
                 </a>
