@@ -8,7 +8,9 @@ const ErrorPage = (props) => {
         <p className="text-7xl text-neutral-600">¯\_(ツ)_/¯</p>
         <br />
         {props.type === "notes" && (
-          <p className="text-2xl text-gray-600">You don't have any notes. </p>
+          <p className="text-2xl text-gray-600">
+            You don&quot;t have any notes.{" "}
+          </p>
         )}
         {props.type === "404" && (
           <p className="text-2xl text-gray-600">404 - Page not found.</p>
