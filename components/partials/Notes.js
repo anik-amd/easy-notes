@@ -1,9 +1,10 @@
+import { useSelector, useDispatch } from "react-redux";
+import { format } from "timeago.js";
+
 import Link from "next/link";
 // import notes from "../../__mock__/notes";
 import Card from "../UI/Card";
-
-import { useSelector, useDispatch } from "react-redux";
-import { format } from "timeago.js";
+import ErrorPage from "../UI/ErrorPage";
 
 const Notes = () => {
   const notes = useSelector((state) => state.notes.notes);
@@ -33,6 +34,7 @@ const Notes = () => {
             );
           })}
       </div>
+      {notes.length === 0 && <ErrorPage type="notes" />}
     </>
   );
 };
