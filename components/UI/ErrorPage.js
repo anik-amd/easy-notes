@@ -9,7 +9,7 @@ const ErrorPage = (props) => {
         <br />
         {props.type === "notes" && (
           <p className="text-2xl text-gray-600">
-            You don&quot;t have any notes.{" "}
+            You don&apos;t have any notes.{" "}
           </p>
         )}
         {props.type === "404" && (
