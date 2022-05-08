@@ -6,7 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "export": "next export",
-    "deploy": "next build && next export -o docs && git checkout -- docs && git checkout -- docs/.nojekyll && git add docs && git commit -m \"chore: regen site\" && git push origin master",
     "start": "next start",
     "lint": "next lint"
   },
