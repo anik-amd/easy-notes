@@ -4,7 +4,7 @@
 const ErrorPage = (props) => {
   return (
     <>
-      <div className="text-center  py-5 pl-4 pr-6 m-5 block w-full">
+      <div className="text-center  py-5 pl-4 pr-6 m-5 block">
         <p className="text-7xl text-neutral-600">¯\_(ツ)_/¯</p>
         <br />
         {props.type === "notes" && (
