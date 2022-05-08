@@ -12,7 +12,7 @@ const Notes = () => {
 
   return (
     <>
-      <div className="grid grid-cols-2 mx-6 justify-items-center sm:grid-cols-3 sm:mx-16 md:grid-cols-4 md:mx-32 gap-3 my-4">
+      <div className="grid grid-cols-2 mx-6 place-content-stretch sm:grid-cols-3 sm:mx-16 md:grid-cols-4 md:mx-32 gap-3 my-4">
         {notes &&
           notes.map((note) => {
             return (

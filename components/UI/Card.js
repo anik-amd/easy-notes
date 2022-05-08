@@ -5,7 +5,7 @@
 const Card = (props) => {
   return (
     <div
-      className={`bg-white dark:bg-zinc-900 ${
+      className={`bg-white grow min-h-full dark:bg-zinc-900 ${
         !props.hover && "hover:bg-zinc-50 dark:hover:bg-zinc-800"
       } rounded-xl ${
         props.size ? "max-w-sm" : "max-w-lg"
