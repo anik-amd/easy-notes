@@ -1,33 +1,37 @@
-name: Deploy to Github Pages
-
+name: Build and Deploy
 on:
   push:
     branches:
-      - main
-
-  workflow_dispatch:
-
+      - master
 jobs:
-  deployment:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup Node
-        uses: actions/setup-node@v2
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
         with:
-          node-version: "lts/*"
-          cache: "npm"
+          persist-credentials: false
 
-      - name: Build
-        run: |
-          npm i
-          npm run build
-          npm run export
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install and Build
+        uses: actions/setup-node@v1
+      - run: npm install
+      - run: npm run build
+      - run: npm run export
+        env:
+          CI: true
+      - run: touch out/.nojekyll
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./out
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: out
+          CLEAN: true
