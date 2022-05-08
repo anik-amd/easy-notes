@@ -1,5 +1,6 @@
 // import notes from "../../__mock__/notes";
 
+import Head from "next/head";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import Swal from "sweetalert2";
@@ -82,6 +83,13 @@ const Note = () => {
     <>
       {note && !showForm && (
         <>
+          <Head>
+            <title>{`${note.title} || Easy Notes`}</title>
+            <meta
+              name="viewport"
+              content="initial-scale=1.0, width=device-width"
+            />
+          </Head>
           <div className="p-5 m-5 sm:flex sm:justify-center md:justify-center">
             <Card hover="disable">
               <div className="flex justify-between">
@@ -120,6 +128,13 @@ const Note = () => {
       )}
       {note && showForm && (
         <div className="sm:flex sm:justify-center md:justify-center">
+          <Head>
+            <title>{`Edit - ${note.title} || Easy Notes`}</title>
+            <meta
+              name="viewport"
+              content="initial-scale=1.0, width=device-width"
+            />
+          </Head>
           <form className="p-5 m-5 rounded-lg block sm:w-5/12 md:w-6/12 bg-zinc-50 dark:bg-zinc-800">
             <span className="block font-semibold pb-5 text-zinc-700 dark:text-zinc-200 text-2xl">
               Edit Note

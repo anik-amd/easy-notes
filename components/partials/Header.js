@@ -22,8 +22,11 @@ const Header = () => {
   return (
     <>
       <Head>
-        <title>Easy Notes</title>
-        <meta name="description" content="Take notes in your browser." />
+        <title>Easy Notes || Privacy focused browser based notepad.</title>
+        <meta
+          name="description"
+          content="Privacy focused browser based notepad."
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex justify-between bg-slate-200 dark:bg-slate-800 py-3 px-10">
